@@ -10,7 +10,7 @@ export const teamMembers: TeamMember[] = [
     name: "Ruhan Nandalal",
     role: "Fullstack Developer | Back-end Coordinator",
     image: "/team/ruhan.png",
-    linkedin: "https://www.linkedin.com/in/ruhan-nandalal-683387320/"
+    linkedin: "https://www.linkedin.com/in/ruhan-nandalal-4405842b7/"
   },
   {
     name: "Chiran Senarath",

@@ -94,14 +94,14 @@ const About = () => {
     <div className="min-h-screen w-full relative overflow-hidden">
       <Particles
         className="absolute inset-0 pointer-events-none z-10"
-        quantity={300}
-        staticity={20}
-        ease={70}
+        quantity={700}
+        staticity={30}
+        ease={20}
         color="#FF4A8D"
         refresh={false}
-        size={1.5}
-        vx={0.2}
-        vy={0.2}
+        size={2}
+        vx={0.5}
+        vy={0.5}
       />
       <PageLayout>
         {/* Parallax Section */}

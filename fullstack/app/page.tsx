@@ -248,7 +248,7 @@ export default function Home() {
           className="youtube-video flex flex-col items-center py-16"
           id="help"
         >
-          <h2 className="text-4xl font-bold mb-4">Watch Our Video</h2>
+          <h2 className="text-4xl font-bold mb-4">Watch Preview</h2>
           <div className="overflow-hidden rounded-2xl shadow-2xl">
             <iframe
               width="854"

@@ -27,7 +27,7 @@ export function HeroScrollDemo() {
             loop
             muted
           >
-            <source src="/Scroll Animation/Sample Graph.mp4" type="video/mp4" />
+            <source src="/Scroll Animation/Marketing_Video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

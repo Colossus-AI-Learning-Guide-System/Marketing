@@ -216,7 +216,7 @@ const About = () => {
         <div className="bg-black">
           <FeatureSteps
             features={features}
-            title="Your Journey Starts Here"
+            title="Our Journey Starts Here"
             autoPlayInterval={4000}
           />
         </div>

@@ -91,19 +91,19 @@ const features = [
 
 const About = () => {
   return (
-    <div className="min-h-screen w-full relative overflow-hidden">
-      <Particles
-        className="absolute inset-0 pointer-events-none z-10"
-        quantity={700}
-        staticity={30}
-        ease={20}
-        color="#FF4A8D"
-        refresh={false}
-        size={2}
-        vx={0.5}
-        vy={0.5}
-      />
-      <PageLayout>
+    <PageLayout>
+      <div className="min-h-screen w-full relative overflow-hidden">
+        <Particles
+          className="absolute inset-0 pointer-events-none z-10"
+          quantity={700}
+          staticity={30}
+          ease={20}
+          color="#FF4A8D"
+          refresh={false}
+          size={2}
+          vx={0.5}
+          vy={0.5}
+        />
         {/* Parallax Section */}
         <div className="relative min-h-screen w-full">
           <HeroParallax products={parallaxImages} />
@@ -220,8 +220,8 @@ const About = () => {
             autoPlayInterval={4000}
           />
         </div>
-      </PageLayout>
-    </div>
+      </div>
+    </PageLayout>
   );
 };
 

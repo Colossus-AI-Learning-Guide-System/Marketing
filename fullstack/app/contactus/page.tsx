@@ -113,19 +113,19 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen w-full relative overflow-hidden">
-      <Particles
-        className="absolute inset-0 pointer-events-none z-10"
-        quantity={700}
-        staticity={30}
-        ease={20}
-        color="#FF4A8D"
-        refresh={false}
-        size={2}
-        vx={0.5}
-        vy={0.5}
-      />
-      <PageLayout>
+    <PageLayout>
+      <div className="bg-black min-h-screen w-full relative overflow-hidden">
+        <Particles
+          className="absolute inset-0 pointer-events-none z-10"
+          quantity={700}
+          staticity={30}
+          ease={20}
+          color="#FF4A8D"
+          refresh={false}
+          size={2}
+          vx={0.5}
+          vy={0.5}
+        />
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl font-bold text-center mb-12 text-white">
@@ -286,8 +286,8 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-      </PageLayout>
-    </div>
+      </div>
+    </PageLayout>
   );
 };
 

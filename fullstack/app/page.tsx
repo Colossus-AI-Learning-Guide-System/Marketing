@@ -143,7 +143,7 @@ export default function Home() {
         <main style={{ marginTop: dropdownHeight }} className="relative">
           {/* Hero Section */}
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center min-h-screen pt-0 pb-20">
+            <div className="flex flex-col items-center justify-center min-h-screen pt-2 pb-20">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, ease: "linear", repeat: Infinity }}
@@ -185,17 +185,8 @@ export default function Home() {
           </div>
 
           {/* Features Section */}
-          <div className="container mx-auto px-4 py-24" id="features">
-            <div className="text-4xl md:text-5xl font-bold text-center mb-16">
-              <TextEffect
-                className="inline-flex bg-clip-text text-transparent bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF]"
-                per="char"
-                preset="stagger"
-                reverseScroll={true}
-              >
-                Innovative Tools for Smarter Learning
-              </TextEffect>
-            </div>
+          <div className="container mx-auto px-4 py-6" id="features">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] leading-loose pt-0 pb-2">Innovative Tools for Smarter Learning</h2>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}

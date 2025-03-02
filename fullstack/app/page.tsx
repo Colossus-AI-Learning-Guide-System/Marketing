@@ -217,11 +217,11 @@ export default function Home() {
                 </motion.div>
               ))}
 
-              <div className="md:col-span-3 flex justify-center gap-8">
-                {features.slice(3).map((feature) => (
+              <div className="md:col-span-3 flex flex-col md:flex-row justify-center gap-8">
+                {features.slice(3, 5).map((feature) => (
                   <motion.div
                     key={feature.title}
-                    className="bg-[#2d2d2d] backdrop-blur-lg rounded-xl p-8 hover:bg-[#333] transition-all duration-300 border border-white/10 cursor-pointer shadow-lg hover:shadow-xl hover:shadow-black/20 group w-full md:w-[calc(33.33%-1rem)]"
+                    className="bg-[#2d2d2d] backdrop-blur-lg rounded-xl p-8 hover:bg-[#333] transition-all duration-300 border border-white/10 cursor-pointer shadow-lg hover:shadow-xl hover:shadow-black/20 group w-full"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     animate={{
@@ -246,21 +246,21 @@ export default function Home() {
           </div>
 
           {/* New YouTube Video Section */}
-          <div
-            className="youtube-video flex flex-col items-center py-16"
-            id="help"
-          >
-            <h2 className="text-4xl font-bold mb-4">Watch Preview</h2>
-            <div className="overflow-hidden rounded-2xl shadow-2xl">
-              <iframe
-                width="854"
-                height="480"
-                src="https://www.youtube.com/embed/0XRILxt-v00"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+          <div className="youtube-video flex flex-col items-center py-16 px-4 w-full" id="help">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center">
+              Watch Preview
+            </h2>
+            <div className="w-full max-w-[90%] md:max-w-[85%] lg:max-w-[854px] px-4">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl" style={{ paddingTop: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/0XRILxt-v00"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
           </div>
 

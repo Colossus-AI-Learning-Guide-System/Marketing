@@ -113,6 +113,7 @@ const features: Feature[] = [
 
 export default function Home() {
   const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
+  const [dropdownHeight, setDropdownHeight] = useState(0);
 
   return (
     <PageLayout>
@@ -139,10 +140,10 @@ export default function Home() {
         />
 
         {/* Main content */}
-        <main className="relative">
+        <main style={{ marginTop: dropdownHeight }} className="relative">
           {/* Hero Section */}
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center justify-center min-h-screen pt-24 pb-16">
+            <div className="flex flex-col items-center justify-center min-h-screen pt-0 pb-20">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, ease: "linear", repeat: Infinity }}
@@ -156,10 +157,22 @@ export default function Home() {
                   className="rounded-full"
                 />
               </motion.div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-16 text-center">
-                <TextEffect per="word" preset="fade" className="text-white">
-                  {`AI-Powered Learning,\nSmarter Knowledge Navigation`}
-                </TextEffect>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-16 text-center text-white">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  AI-Powered Learning,<br />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <div style={{ margin: '1.8rem 0' }}></div>
+                  Smarter Knowledge Navigation
+                </motion.div>
               </h1>
               <motion.button
                 whileHover={{ scale: 1.05 }}

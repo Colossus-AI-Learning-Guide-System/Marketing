@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Send, X, MessageSquare, Loader2 } from "lucide-react";
+import { Send, X, MessageSquare, Loader2, Mic, Volume2 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -11,6 +11,13 @@ type Message = {
   sender: "user" | "bot";
   timestamp: Date;
 };
+
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +34,12 @@ export function ChatBot() {
   const [llmProvider, setLlmProvider] = useState("Loading...");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [supportsSpeech, setSupportsSpeech] = useState(false);
+  const [isSpeechEnabled, setIsSpeechEnabled] = useState(true);
+  const recognition = useRef<any>(null);
+  const synthesis = useRef<SpeechSynthesis | null>(null);
+  const currentUtterance = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
     // Fetch the current LLM provider when the component mounts
@@ -48,6 +61,36 @@ export function ChatBot() {
     fetchLlmProvider();
   }, []);
 
+  useEffect(() => {
+    // Check browser speech support
+    if (typeof window !== "undefined") {
+      setSupportsSpeech(
+        'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
+      );
+      
+      // Initialize speech recognition
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        recognition.current = new SpeechRecognition();
+        recognition.current.continuous = false;
+        recognition.current.interimResults = false;
+
+        recognition.current.onresult = (event: any) => {
+          const transcript = event.results[0][0].transcript;
+          setInputValue(transcript);
+          setIsRecording(false);
+        };
+
+        recognition.current.onerror = () => {
+          setIsRecording(false);
+        };
+      }
+
+      // Initialize speech synthesis
+      synthesis.current = window.speechSynthesis;
+    }
+  }, []);
+
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
@@ -62,6 +105,70 @@ export function ChatBot() {
       inputRef.current.focus();
     }
   }, [messages, isOpen]);
+
+  const toggleSpeech = () => {
+    setIsSpeechEnabled(!isSpeechEnabled);
+    if (!isSpeechEnabled) {
+      synthesis.current?.cancel();
+    }
+  };
+
+  const startRecording = () => {
+    if (recognition.current) {
+      recognition.current.start();
+      setIsRecording(true);
+    }
+  };
+
+  const stopRecording = () => {
+    if (recognition.current) {
+      recognition.current.stop();
+      setIsRecording(false);
+    }
+  };
+
+  const speakMessage = (text: string) => {
+    if (!isSpeechEnabled || !synthesis.current) return;
+
+    if (currentUtterance.current) {
+      synthesis.current.cancel();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    
+    // Select a voice
+    const voices = synthesis.current.getVoices();
+    const preferredVoice = voices.find(voice => 
+      voice.name.includes('English') && voice.lang.includes('US')
+    );
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    currentUtterance.current = utterance;
+    synthesis.current.speak(utterance);
+  };
+
+  useEffect(() => {
+    const lastMessage = messages[messages.length - 1];
+    // Check if the last message is from the bot and not the welcome message
+    if (lastMessage?.sender === 'bot' && lastMessage.text !== "Hi there! I'm the Colossus.AI assistant. How can I help you today?") {
+      speakMessage(lastMessage.text);
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    return () => {
+      if (synthesis.current) {
+        synthesis.current.cancel();
+      }
+      if (recognition.current) {
+        recognition.current.stop();
+      }
+    };
+  }, []);
 
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
@@ -231,8 +338,58 @@ export function ChatBot() {
                 >
                   <Send className="w-5 h-5" />
                 </button>
+                <button
+                  onClick={isRecording ? stopRecording : startRecording}
+                  className={`p-2 rounded-full transition-all ${
+                    isRecording 
+                      ? "bg-red-500 animate-pulse" 
+                      : "bg-gray-700 hover:bg-gray-600"
+                  }`}
+                  aria-label={isRecording ? "Stop recording" : "Start recording"}
+                  disabled={!supportsSpeech}
+                >
+                  <Mic className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={toggleSpeech}
+                  className={`p-2 rounded-full transition-colors ${
+                    isSpeechEnabled 
+                      ? "bg-[#FF4A8D] hover:bg-[#FF4A8D]/90" 
+                      : "bg-gray-700 hover:bg-gray-600"
+                  }`}
+                  aria-label={isSpeechEnabled ? "Disable speech" : "Enable speech"}
+                >
+                  <Volume2 className="w-5 h-5" />
+                </button>
               </div>
             </div>
+
+            {/* Visual Waveform Animation */}
+            {isRecording && (
+              <div className="flex items-center ml-2">
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-1 h-4 bg-red-500 mx-[2px]"
+                    animate={{
+                      height: [4, 16, 4],
+                      transition: {
+                        repeat: Infinity,
+                        duration: 0.8,
+                        delay: i * 0.1
+                      }
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Speech Loading State */}
+            {isSpeechEnabled && synthesis.current?.speaking && (
+              <div className="absolute top-2 right-2 flex items-center">
+                <Volume2 className="w-4 h-4 animate-pulse" />
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

@@ -24,7 +24,7 @@ export function ChatBot() {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [llmProvider, setLlmProvider] = useState("Loading...");
+  const [, setLlmProvider] = useState("Loading...");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -157,9 +157,9 @@ export function ChatBot() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">ColossusAI Bot</h3>
-                  <p className="text-xs text-gray-400">
+                  {/* <p className="text-xs text-gray-400">
                     Powered by {llmProvider}
-                  </p>
+                  </p> */}
                 </div>
               </div>
               <button

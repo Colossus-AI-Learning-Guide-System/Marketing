@@ -18,7 +18,7 @@ Key Features:
 
 The system helps users easily navigate complex educational content through visual representations and AI-guided learning paths.
 
-Team: Created by Team SE42 (Ruhan Nandalal, Chiran Senarath, Tharana Bopearachchi, Sudesh Seneviratne, Akila Senanayake, and Pasindu Gamage)
+Team: Created by Team SE42 (Ruhan Nandalal, Chiran Senarath, Tharana Bopearachchi, Sudesh Seneviratne, Akila Senanayake, and Pasidu)
 Contact: info.colossusai@gmail.com
 `;
 

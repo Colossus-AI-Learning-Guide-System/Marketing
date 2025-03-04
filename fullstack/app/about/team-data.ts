@@ -37,7 +37,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/akila-senanayake-23aab42a7/"
   },
   {
-    name: "Pasindu Gamage",
+    name: "Pasidu",
     role: "Fullstack Developer | UI Designer",
     image: "/team/pasidu.jpg",
     linkedin: "https://www.linkedin.com/in/pasindu-gamage-14442015a/"

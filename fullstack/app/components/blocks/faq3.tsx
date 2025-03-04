@@ -88,7 +88,7 @@ const teamMembers = [
   },
   {
     id: 4,
-    name: "Pasindu Gamage",
+    name: "Pasidu",
     designation: "Fullstack Developer",
     image: "/team/pasidu.jpg",
   },

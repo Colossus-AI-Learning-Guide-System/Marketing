@@ -72,13 +72,13 @@ const teamMembers = [
     id: 1,
     name: "Ruhan",
     designation: "Team Leader",
-    image: "/team/ruhan.png",
+    image: "/team/ruhan.jpg",
   },
   {
     id: 2,
     name: "Tharana",
     designation: "Fullstack Developer",
-    image: "/team/tharana.jpg",
+    image: "/team/tharana.png",
   },
   {
     id: 3,

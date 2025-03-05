@@ -56,7 +56,7 @@ jobs:
         with:
           path: |
             fullstack/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('fullstack/package-lock.json', 'fullstack/yarn.lock') }}-${{ hashFiles('fullstack/**.[jt]s', 'fullstack/**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('fullstack/package-lock.json', 'fullstack/yarn.lock') }}-${{ hashFiles('fullstack/.[jt]s', 'fullstack/.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('fullstack/package-lock.json', 'fullstack/yarn.lock') }}-
 

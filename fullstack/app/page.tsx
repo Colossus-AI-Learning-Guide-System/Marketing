@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { HeroScrollDemo } from "./components/block/code-demo";
-import { TextEffect } from "./components/core/text-effect";
 import { Particles } from "./components/ui/particles";
 import { FeaturePopup } from "./components/ui/feature-popup";
 import { TestimonialsDemo } from "./components/ui/testimonials.demo";
@@ -113,7 +112,7 @@ const features: Feature[] = [
 
 export default function Home() {
   const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
-  const [dropdownHeight, setDropdownHeight] = useState(0);
+  const [dropdownHeight] = useState(0);
 
   return (
     <PageLayout>
@@ -186,7 +185,9 @@ export default function Home() {
 
           {/* Features Section */}
           <div className="container mx-auto px-4 py-6" id="features">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] leading-loose pt-0 pb-2">Innovative Tools for Smarter Learning</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] leading-loose pt-0 pb-2">
+              Innovative Tools for Smarter Learning
+            </h2>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -269,8 +270,10 @@ export default function Home() {
             <HeroScrollDemo />
           </div>
 
-          {/* Add the TestimonialsDemo component here */}
+          {/* Testimonials Section */}
           <TestimonialsDemo />
+
+          {/* FAQ Section */}
           <div id="faq">
             <Faq3Demo />
           </div>

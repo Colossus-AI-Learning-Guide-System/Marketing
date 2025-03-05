@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Send, X, MessageSquare, Loader2, Mic, Volume2 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,13 +11,6 @@ type Message = {
   sender: "user" | "bot";
   timestamp: Date;
 };
-
-declare global {
-  interface Window {
-    SpeechRecognition: any;
-    webkitSpeechRecognition: any;
-  }
-}
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +30,7 @@ export function ChatBot() {
   const [isRecording, setIsRecording] = useState(false);
   const [supportsSpeech, setSupportsSpeech] = useState(false);
   const [isSpeechEnabled, setIsSpeechEnabled] = useState(true);
-  const recognition = useRef<any>(null);
+  const recognition = useRef<SpeechRecognition | null>(null);
   const synthesis = useRef<SpeechSynthesis | null>(null);
   const currentUtterance = useRef<SpeechSynthesisUtterance | null>(null);
 
@@ -68,22 +61,34 @@ export function ChatBot() {
         'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
       );
       
-      // Initialize speech recognition
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        recognition.current = new SpeechRecognition();
-        recognition.current.continuous = false;
-        recognition.current.interimResults = false;
+      // Initialize speech recognition using type-safe approach
+      try {
+        // Use type assertion with unknown as intermediate step to avoid 'any'
+        const SpeechRecognitionConstructor = 
+          (window as unknown as { SpeechRecognition: new () => SpeechRecognition }).SpeechRecognition || 
+          (window as unknown as { webkitSpeechRecognition: new () => SpeechRecognition }).webkitSpeechRecognition;
+          
+        if (SpeechRecognitionConstructor) {
+          const speechRecognition = new SpeechRecognitionConstructor();
+          recognition.current = speechRecognition;
+          
+          if (recognition.current) {
+            recognition.current.continuous = false;
+            recognition.current.interimResults = false;
 
-        recognition.current.onresult = (event: any) => {
-          const transcript = event.results[0][0].transcript;
-          setInputValue(transcript);
-          setIsRecording(false);
-        };
+            recognition.current.onresult = (event: SpeechRecognitionEvent) => {
+              const transcript = event.results[0][0].transcript;
+              setInputValue(transcript);
+              setIsRecording(false);
+            };
 
-        recognition.current.onerror = () => {
-          setIsRecording(false);
-        };
+            recognition.current.onerror = () => {
+              setIsRecording(false);
+            };
+          }
+        }
+      } catch (error) {
+        console.error("Error initializing speech recognition:", error);
       }
 
       // Initialize speech synthesis
@@ -115,19 +120,29 @@ export function ChatBot() {
 
   const startRecording = () => {
     if (recognition.current) {
-      recognition.current.start();
-      setIsRecording(true);
+      try {
+        recognition.current.start();
+        setIsRecording(true);
+      } catch (error) {
+        console.error("Error starting speech recognition:", error);
+        setIsRecording(false);
+      }
     }
   };
 
   const stopRecording = () => {
     if (recognition.current) {
-      recognition.current.stop();
-      setIsRecording(false);
+      try {
+        recognition.current.stop();
+      } catch (error) {
+        console.error("Error stopping speech recognition:", error);
+      } finally {
+        setIsRecording(false);
+      }
     }
   };
 
-  const speakMessage = (text: string) => {
+  const speakMessage = useCallback((text: string) => {
     if (!isSpeechEnabled || !synthesis.current) return;
 
     if (currentUtterance.current) {
@@ -149,7 +164,7 @@ export function ChatBot() {
 
     currentUtterance.current = utterance;
     synthesis.current.speak(utterance);
-  };
+  }, [isSpeechEnabled]);
 
   useEffect(() => {
     const lastMessage = messages[messages.length - 1];
@@ -157,7 +172,7 @@ export function ChatBot() {
     if (lastMessage?.sender === 'bot' && lastMessage.text !== "Hi there! I'm the Colossus.AI assistant. How can I help you today?") {
       speakMessage(lastMessage.text);
     }
-  }, [messages]);
+  }, [messages, speakMessage]);
 
   useEffect(() => {
     return () => {

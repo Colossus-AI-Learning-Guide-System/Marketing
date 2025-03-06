@@ -53,7 +53,7 @@ export function Navbar() {
               isOpen ? "block" : "hidden"
             }`}
           >
-            {["Home", "Features", "Contact Us", "About"].map((item) => (
+            {["Home", "Features", "Contactus", "About"].map((item) => (
               <Link
                 key={item}
                 href={

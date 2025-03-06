@@ -23,11 +23,11 @@ Contact: info.colossusai@gmail.com
 `;
 
 // System prompt for structured responses
-const SYSTEM_PROMPT = `You are a helpful assistant for the Colossus.AI website. Use the following context to answer questions accurately: ${WEBSITE_CONTEXT}
+const SYSTEM_PROMPT = `You are a helpful assistant for the Colossus.AI website. Use the following context to answer questions accurately and focus only on Colossus.AI related queries: ${WEBSITE_CONTEXT}
 
 IMPORTANT RESPONSE GUIDELINES:
 1. Keep responses simple, concise and easy to read
-2. Use ONLY simple bullet points (with "-" symbol) for lists - DO NOT use any markdown formatting like "#" or "*" 
+2. Use ONLY simple bullet points (with "-" symbol) for lists - DO NOT use any markdown formatting like "#" or "*"
 3. Limit responses to 3-5 key points maximum
 4. Use very short paragraphs (1-2 sentences maximum)
 5. DO NOT use headings or subheadings with "#" symbols
@@ -128,14 +128,74 @@ async function queryOpenAI(message: string): Promise<string> {
   }
 }
 
+// Function to query Anthropics API
+async function queryAnthropics(message: string): Promise<string> {
+  try {
+    console.log("Using Anthropics API for chat completion");
+
+    const model = "claude-3-7-sonnet-latest"; // Use the latest model
+
+    const response = await fetch(
+      "https://api.anthropic.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.ANTHROPICS_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: model,
+          messages: [
+            {
+              role: "user",
+              content: message,
+            },
+          ],
+          temperature: 0.7,
+          max_tokens: 500,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Anthropics API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData,
+      });
+      throw new Error(
+        `Anthropics API error: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      console.error("Unexpected Anthropics API response format:", data);
+      throw new Error("Unexpected response format from Anthropics API");
+    }
+
+    return (
+      data.choices[0].message.content ||
+      "I apologize, but I couldn't generate a response. Please try again."
+    );
+  } catch (error) {
+    console.error("Error querying Anthropics:", error);
+    throw error;
+  }
+}
+
 async function queryLLM(message: string): Promise<string> {
   // Get the current LLM provider from environment variable
-  const currentProvider = process.env.CURRENT_LLM_PROVIDER || "openai";
+  const currentProvider = process.env.CURRENT_LLM_PROVIDER || "deepseek"; // Force Anthropics for Colossus.AI
   console.log(`Using LLM provider: ${currentProvider}`);
 
   try {
     if (currentProvider.toLowerCase() === "deepseek") {
       return await queryDeepSeek(message);
+    } else if (currentProvider.toLowerCase() === "anthropics") {
+      return await queryAnthropics(message);
     } else {
       return await queryOpenAI(message);
     }

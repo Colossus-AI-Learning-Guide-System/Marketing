@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Send, X, MessageSquare, Loader2, Mic, Volume2 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -29,10 +29,8 @@ export function ChatBot() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [supportsSpeech, setSupportsSpeech] = useState(false);
-  const [isSpeechEnabled, setIsSpeechEnabled] = useState(true);
   const recognition = useRef<SpeechRecognition | null>(null);
   const synthesis = useRef<SpeechSynthesis | null>(null);
-  const currentUtterance = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
     // Fetch the current LLM provider when the component mounts
@@ -58,20 +56,28 @@ export function ChatBot() {
     // Check browser speech support
     if (typeof window !== "undefined") {
       setSupportsSpeech(
-        'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
+        "SpeechRecognition" in window || "webkitSpeechRecognition" in window
       );
-      
+
       // Initialize speech recognition using type-safe approach
       try {
         // Use type assertion with unknown as intermediate step to avoid 'any'
-        const SpeechRecognitionConstructor = 
-          (window as unknown as { SpeechRecognition: new () => SpeechRecognition }).SpeechRecognition || 
-          (window as unknown as { webkitSpeechRecognition: new () => SpeechRecognition }).webkitSpeechRecognition;
-          
+        const SpeechRecognitionConstructor =
+          (
+            window as unknown as {
+              SpeechRecognition: new () => SpeechRecognition;
+            }
+          ).SpeechRecognition ||
+          (
+            window as unknown as {
+              webkitSpeechRecognition: new () => SpeechRecognition;
+            }
+          ).webkitSpeechRecognition;
+
         if (SpeechRecognitionConstructor) {
           const speechRecognition = new SpeechRecognitionConstructor();
           recognition.current = speechRecognition;
-          
+
           if (recognition.current) {
             recognition.current.continuous = false;
             recognition.current.interimResults = false;
@@ -111,13 +117,6 @@ export function ChatBot() {
     }
   }, [messages, isOpen]);
 
-  const toggleSpeech = () => {
-    setIsSpeechEnabled(!isSpeechEnabled);
-    if (!isSpeechEnabled) {
-      synthesis.current?.cancel();
-    }
-  };
-
   const startRecording = () => {
     if (recognition.current) {
       try {
@@ -141,49 +140,6 @@ export function ChatBot() {
       }
     }
   };
-
-  const speakMessage = useCallback((text: string) => {
-    if (!isSpeechEnabled || !synthesis.current) return;
-
-    if (currentUtterance.current) {
-      synthesis.current.cancel();
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    
-    // Select a voice
-    const voices = synthesis.current.getVoices();
-    const preferredVoice = voices.find(voice => 
-      voice.name.includes('English') && voice.lang.includes('US')
-    );
-    if (preferredVoice) {
-      utterance.voice = preferredVoice;
-    }
-
-    currentUtterance.current = utterance;
-    synthesis.current.speak(utterance);
-  }, [isSpeechEnabled]);
-
-  useEffect(() => {
-    const lastMessage = messages[messages.length - 1];
-    // Check if the last message is from the bot and not the welcome message
-    if (lastMessage?.sender === 'bot' && lastMessage.text !== "Hi there! I'm the Colossus.AI assistant. How can I help you today?") {
-      speakMessage(lastMessage.text);
-    }
-  }, [messages, speakMessage]);
-
-  useEffect(() => {
-    return () => {
-      if (synthesis.current) {
-        synthesis.current.cancel();
-      }
-      if (recognition.current) {
-        recognition.current.stop();
-      }
-    };
-  }, []);
 
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return;
@@ -356,25 +312,16 @@ export function ChatBot() {
                 <button
                   onClick={isRecording ? stopRecording : startRecording}
                   className={`p-2 rounded-full transition-all ${
-                    isRecording 
-                      ? "bg-red-500 animate-pulse" 
+                    isRecording
+                      ? "bg-red-500 animate-pulse"
                       : "bg-gray-700 hover:bg-gray-600"
                   }`}
-                  aria-label={isRecording ? "Stop recording" : "Start recording"}
+                  aria-label={
+                    isRecording ? "Stop recording" : "Start recording"
+                  }
                   disabled={!supportsSpeech}
                 >
                   <Mic className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={toggleSpeech}
-                  className={`p-2 rounded-full transition-colors ${
-                    isSpeechEnabled 
-                      ? "bg-[#FF4A8D] hover:bg-[#FF4A8D]/90" 
-                      : "bg-gray-700 hover:bg-gray-600"
-                  }`}
-                  aria-label={isSpeechEnabled ? "Disable speech" : "Enable speech"}
-                >
-                  <Volume2 className="w-5 h-5" />
                 </button>
               </div>
             </div>
@@ -391,8 +338,8 @@ export function ChatBot() {
                       transition: {
                         repeat: Infinity,
                         duration: 0.8,
-                        delay: i * 0.1
-                      }
+                        delay: i * 0.1,
+                      },
                     }}
                   />
                 ))}
@@ -400,7 +347,7 @@ export function ChatBot() {
             )}
 
             {/* Speech Loading State */}
-            {isSpeechEnabled && synthesis.current?.speaking && (
+            {synthesis.current?.speaking && (
               <div className="absolute top-2 right-2 flex items-center">
                 <Volume2 className="w-4 h-4 animate-pulse" />
               </div>

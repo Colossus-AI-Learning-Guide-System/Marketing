@@ -46,7 +46,7 @@ export function Navbar() {
 
           {/* Navigation Links */}
           <div className={`hidden md:flex items-center gap-8 ${isOpen ? 'block' : 'hidden'}`}>  
-            {['Home', 'Features', 'Contact-us', 'About'].map((item) => (
+            {['Home', 'Features', 'Contactus', 'About'].map((item) => (
               <Link
                 key={item}
                 href={
@@ -68,7 +68,7 @@ export function Navbar() {
         {/* Dropdown Menu for Mobile View */}
         <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-all duration-300 ease-in-out`}>  
           <div className="bg-black text-white p-4 rounded shadow-lg">
-            {['Home', 'Features', 'Contact-us', 'About'].map((item) => (
+            {['Home', 'Features', 'Contactus', 'About'].map((item) => (
               <Link
                 key={item}
                 href={

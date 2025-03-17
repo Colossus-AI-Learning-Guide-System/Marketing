@@ -85,7 +85,7 @@ const features = [
     title: "Test, Optimize, and Deploy",
     content:
       "Conduct testing to ensure accuracy, speed, and efficiency in generating learning paths. Launch the system and present it with real-world examples to demonstrate its value.",
-    image: "/about/Landing_Page_Group3.png",
+    image: "/about/123.jpg",
   },
 ];
 

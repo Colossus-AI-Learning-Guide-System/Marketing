@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from 'react';
+import { useState } from "react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,10 @@ export function Navbar() {
 
           {/* Hamburger Icon for Mobile View */}
           <div className="md:hidden flex items-center">
-            <button onClick={toggleMenu} className="text-white focus:outline-none">
+            <button
+              onClick={toggleMenu}
+              className="text-white focus:outline-none"
+            >
               <div className="flex flex-col space-y-1">
                 <span className="block w-8 h-1 bg-white"></span>
                 <span className="block w-8 h-1 bg-white"></span>
@@ -50,11 +53,11 @@ export function Navbar() {
               <Link
                 key={item}
                 href={
-                  item === 'Home'
-                    ? '/'
-                    : item === 'Features'
-                    ? '/#features'
-                    : `/${item.toLowerCase().replace(/ /g, '-')}`
+                  item === "Home"
+                    ? "/"
+                    : item === "Features"
+                    ? "/#features"
+                    : `/${item.toLowerCase().replace(/ /g, "-")}`
                 }
                 className="relative text-white hover:text-white/80 transition-colors group text-lg"
               >
@@ -82,17 +85,21 @@ export function Navbar() {
         </div>
 
         {/* Dropdown Menu for Mobile View */}
-        <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-all duration-300 ease-in-out`}>  
+        <div
+          className={`md:hidden ${
+            isOpen ? "block" : "hidden"
+          } transition-all duration-300 ease-in-out`}
+        >
           <div className="bg-black text-white p-4 rounded shadow-lg">
-            {['Home', 'Features', 'Contactus', 'About'].map((item) => (
+            {["Home", "Features", "Contactus", "About"].map((item) => (
               <Link
                 key={item}
                 href={
-                  item === 'Home'
-                    ? '/'
-                    : item === 'Features'
-                    ? '/#features'
-                    : `/${item.toLowerCase().replace(/ /g, '-')}`
+                  item === "Home"
+                    ? "/"
+                    : item === "Features"
+                    ? "/#features"
+                    : `/${item.toLowerCase().replace(/ /g, "-")}`
                 }
                 onClick={toggleMenu}
                 className="block py-2 relative text-white hover:text-white/80 transition-colors group"

@@ -44,8 +44,8 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Navigation Links */}
-          <div className={`hidden md:flex items-center gap-8 ${isOpen ? 'block' : 'hidden'}`}>  
+          {/* Navigation Links - Centered */}
+          <div className={`hidden md:flex items-center gap-8 flex-1 justify-center ${isOpen ? 'block' : 'hidden'}`}>  
             {['Home', 'Features', 'Contactus', 'About'].map((item) => (
               <Link
                 key={item}
@@ -62,6 +62,22 @@ export function Navbar() {
                 <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
+          </div>
+
+          {/* Sign In/Sign Up Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="https://auth.colossus.com/signin"
+              className="px-4 py-2 text-white hover:text-white/80 transition-colors"
+            >
+              Sign In
+            </a>
+            <a
+              href="https://auth.colossus.com/signup"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white hover:opacity-90 transition-opacity"
+            >
+              Sign Up
+            </a>
           </div>
         </div>
 
@@ -85,6 +101,21 @@ export function Navbar() {
                 <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
+            {/* Mobile Sign In/Sign Up Buttons */}
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href="https://auth.colossus.com/signin"
+                className="block py-2 text-center text-white hover:text-white/80 transition-colors border border-white/20 rounded-lg"
+              >
+                Sign In
+              </a>
+              <a
+                href="https://auth.colossus.com/signup"
+                className="block py-2 text-center rounded-lg bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white hover:opacity-90 transition-opacity"
+              >
+                Sign Up
+              </a>
+            </div>
           </div>
         </div>
       </div>

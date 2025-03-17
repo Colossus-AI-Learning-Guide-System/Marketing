@@ -9,6 +9,7 @@ import { FeaturePopup } from "./components/ui/feature-popup";
 import { TestimonialsDemo } from "./components/ui/testimonials.demo";
 import { Faq3Demo } from "./components/blocks/faq3";
 import { PageLayout } from "./components/layout/page-layout";
+import FollowCursor from "./components/ui/follow-cursor"; // Import FollowCursor
 
 // Feature data structure
 interface Feature {
@@ -117,6 +118,7 @@ export default function Home() {
   return (
     <PageLayout>
       <div className="bg-black min-h-screen w-full relative overflow-hidden">
+        <FollowCursor color="#FFFFFF50" /> {/* Add FollowCursor component */}
         <Particles
           className="absolute inset-0 pointer-events-none z-10"
           quantity={700}
@@ -173,13 +175,14 @@ export default function Home() {
                   Smarter Knowledge Navigation
                 </motion.div>
               </h1>
-              <motion.button
+                <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all mb-8"
-              >
-                Try Colossus.AI →
-              </motion.button>
+                onClick={() => window.location.href = "https://auth.colossus.com/signup"}
+                >
+                Try Colossus.AI
+                </motion.button>
             </div>
           </div>
 
@@ -249,7 +252,7 @@ export default function Home() {
           {/* New YouTube Video Section */}
           <div className="youtube-video flex flex-col items-center py-16 px-4 w-full" id="help">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center">
-              Watch Preview
+              Watch Demo
             </h2>
             <div className="w-full max-w-[90%] md:max-w-[85%] lg:max-w-[854px] px-4">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl" style={{ paddingTop: '56.25%' }}>

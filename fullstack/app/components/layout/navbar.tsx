@@ -71,13 +71,13 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="https://auth.colossus.com/signin"
-              className="px-4 py-2 text-white hover:text-white/80 transition-colors"
+              className="px-4 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
             >
               Sign In
             </a>
             <a
               href="https://auth.colossus.com/signup"
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white hover:opacity-90 transition-opacity"
+              className="px-4 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
             >
               Sign Up
             </a>
@@ -112,13 +112,13 @@ export function Navbar() {
             <div className="mt-4 flex flex-col gap-2">
               <a
                 href="https://auth.colossus.com/signin"
-                className="block py-2 text-center text-white hover:text-white/80 transition-colors border border-white/20 rounded-lg"
+                className="block py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
               >
                 Sign In
               </a>
               <a
                 href="https://auth.colossus.com/signup"
-                className="block py-2 text-center rounded-lg bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white hover:opacity-90 transition-opacity"
+                className="block py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
               >
                 Sign Up
               </a>

@@ -25,8 +25,8 @@ export function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Colossus.AI Logo"
-                width={65}
-                height={65}
+                width={50}
+                height={50}
                 className="rounded-full"
               />
             </motion.div>
@@ -71,7 +71,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href="https://auth.colossus.com/signin"
-              className="px-4 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
+              className="px-5 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
             >
               Sign In
             </a>

@@ -181,7 +181,7 @@ export default function Home() {
                 className="bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all mb-8"
                 onClick={() => window.location.href = "https://auth.colossus.com/signup"}
                 >
-                Try Colossus.AI
+                Try Colossus.AI ➡️
                 </motion.button>
             </div>
           </div>

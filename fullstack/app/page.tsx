@@ -9,7 +9,8 @@ import { FeaturePopup } from "./components/ui/feature-popup";
 import { TestimonialsDemo } from "./components/ui/testimonials.demo";
 import { Faq3Demo } from "./components/blocks/faq3";
 import { PageLayout } from "./components/layout/page-layout";
-import FollowCursor from "./components/ui/follow-cursor"; // Import FollowCursor
+import FollowCursor from "./components/ui/follow-cursor"; 
+import { CompatibilityTable } from "./components/ui/table-demo"; // Import the CompatibilityTable component
 
 // Feature data structure
 interface Feature {
@@ -262,6 +263,16 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+            
+            {/* Roadmapping system comparison */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-16 max-w-5xl mx-auto"
+            >
+              <CompatibilityTable />
             </motion.div>
           </div>
 

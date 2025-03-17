@@ -130,7 +130,6 @@ export default function Home() {
           vx={0.5}
           vy={0.5}
         />
-
         {/* Feature Popup */}
         <FeaturePopup
           isOpen={selectedFeature !== null}
@@ -139,7 +138,6 @@ export default function Home() {
           description={selectedFeature?.description || ""}
           icon={selectedFeature?.icon}
         />
-
         {/* Main content */}
         <main style={{ marginTop: dropdownHeight }} className="relative">
           {/* Hero Section */}
@@ -164,25 +162,43 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  AI-Powered Learning,<br />
+                  AI-Powered Learning,
+                  <br />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <div style={{ margin: '1.8rem 0' }}></div>
+                  <div style={{ margin: "1.8rem 0" }}></div>
                   Smarter Knowledge Navigation
                 </motion.div>
               </h1>
-                <motion.button
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all mb-8"
-                onClick={() => window.location.href = "https://auth.colossus.com/signup"}
+                className="bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all mb-8 flex items-center gap-2"
+                onClick={() =>
+                  (window.location.href = "https://auth.colossus.com/signup")
+                }
+              >
+                Try Colossus.AI
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transform rotate-45"
                 >
-                Try Colossus.AI ➡️
-                </motion.button>
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </motion.button>
             </div>
           </div>
 
@@ -250,12 +266,18 @@ export default function Home() {
           </div>
 
           {/* New YouTube Video Section */}
-          <div className="youtube-video flex flex-col items-center py-16 px-4 w-full" id="help">
+          <div
+            className="youtube-video flex flex-col items-center py-16 px-4 w-full"
+            id="help"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-center">
               Watch Demo
             </h2>
             <div className="w-full max-w-[90%] md:max-w-[85%] lg:max-w-[854px] px-4">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl" style={{ paddingTop: '56.25%' }}>
+              <div
+                className="relative overflow-hidden rounded-2xl shadow-2xl"
+                style={{ paddingTop: "56.25%" }}
+              >
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src="https://www.youtube.com/embed/0XRILxt-v00"

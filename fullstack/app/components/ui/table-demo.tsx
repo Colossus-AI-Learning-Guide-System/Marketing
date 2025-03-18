@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Check, Monitor, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 interface BrowserItem {
   name: string;

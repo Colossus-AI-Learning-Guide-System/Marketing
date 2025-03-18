@@ -48,8 +48,12 @@ export function Navbar() {
           </div>
 
           {/* Navigation Links - Centered */}
-          <div className={`hidden md:flex items-center gap-8 flex-1 justify-center ${isOpen ? 'block' : 'hidden'}`}>  
-            {['Home', 'Features', 'Contactus', 'About'].map((item) => (
+          <div
+            className={`hidden md:flex items-center gap-8 flex-1 justify-center ${
+              isOpen ? "block" : "hidden"
+            }`}
+          >
+            {["Home", "Features", "Contactus", "About"].map((item) => (
               <Link
                 key={item}
                 href={
@@ -70,13 +74,13 @@ export function Navbar() {
           {/* Sign In/Sign Up Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://auth.colossus.com/signin"
+              href="https://app.colossusai.net/signin"
               className="px-5 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
             >
               Sign In
             </a>
             <a
-              href="https://auth.colossus.com/signup"
+              href="https://app.colossusai.net/signup"
               className="px-4 py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
             >
               Sign Up
@@ -111,13 +115,13 @@ export function Navbar() {
             {/* Mobile Sign In/Sign Up Buttons */}
             <div className="mt-4 flex flex-col gap-2">
               <a
-                href="https://auth.colossus.com/signin"
+                href="https://app.colossusai.net/signin"
                 className="block py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
               >
                 Sign In
               </a>
               <a
-                href="https://auth.colossus.com/signup"
+                href="https://app.colossusai.net/signup"
                 className="block py-2 text-center text-white border border-white/80 rounded-3xl transition-all duration-300 hover:bg-gradient-to-r hover:from-[#FF9F4A] hover:via-[#FF4A8D] hover:to-[#8B4AFF] hover:border-transparent"
               >
                 Sign Up

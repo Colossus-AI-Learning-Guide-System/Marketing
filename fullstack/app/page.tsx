@@ -180,7 +180,7 @@ export default function Home() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-[#FF9F4A] via-[#FF4A8D] to-[#8B4AFF] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all mb-8 flex items-center gap-2"
                 onClick={() =>
-                  (window.location.href = "https://app.colossusai.net/signup")
+                  (window.location.href = "http://app.colossusai.net/signin")
                 }
               >
                 Try Colossus.AI

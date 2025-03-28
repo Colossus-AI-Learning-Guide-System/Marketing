@@ -18,7 +18,7 @@ const items = [
     {
         feature: "AI-Powered Document Analysis",
         desktop: [
-            { name: "NotebookLM", supported: true },
+            
             { name: "Obsidian", supported: false },
             { name: "Kumu", supported: false },
             { name: "InfraNodus", supported: true },
@@ -32,7 +32,7 @@ const items = [
     {
         feature: "Roadmap Visualization",
         desktop: [
-                { name: "NotebookLM", supported: false },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: true },
                 { name: "InfraNodus", supported: true },
@@ -46,7 +46,7 @@ const items = [
     {
         feature: "Knowledge Graph Generation",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: true },
                 { name: "InfraNodus", supported: true },
@@ -60,7 +60,7 @@ const items = [
     {
         feature: "Interactivity with Graphs",
         desktop: [
-                { name: "NotebookLM", supported: false},
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: true },
                 { name: "InfraNodus", supported: true },
@@ -74,7 +74,7 @@ const items = [
     {
         feature: "Automatic Information Linking",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: false },
                 { name: "Kumu", supported: false },
                 { name: "InfraNodus", supported: true },
@@ -88,7 +88,7 @@ const items = [
     {
         feature: "Manual Customization",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: false },
                 { name: "InfraNodus", supported: true },
@@ -102,7 +102,7 @@ const items = [
     {
         feature: "Information Retrieval",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: false },
                 { name: "InfraNodus", supported: true },
@@ -116,7 +116,7 @@ const items = [
     {
         feature: "Plugin Ecosystem",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: false },
                 { name: "InfraNodus", supported: true },
@@ -130,7 +130,7 @@ const items = [
     {
         feature: "Ease of Use",
         desktop: [
-                { name: "NotebookLM", supported: true },
+                
                 { name: "Obsidian", supported: true },
                 { name: "Kumu", supported: false },
                 { name: "InfraNodus", supported: true },
@@ -145,7 +145,7 @@ const items = [
         feature: "- Total Efficiency Percentage -",
         isPercentage: true,
         desktop: [
-                { name: "NotebookLM", value: 78, supported: true },
+                
                 { name: "Obsidian", value: 67, supported: true },
                 { name: "Kumu", value: 44, supported: false },
                 { name: "InfraNodus", value: 89, supported: true },
@@ -161,7 +161,7 @@ const items = [
 function CompatibilityTable() {
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-white/10 bg-[#2d2d2d] p-4 shadow-lg">
-      <h3 className="mb-4 text-center text-xl font-semibold text-[#e1e1e1]">Compititors</h3>
+      <h3 className="mb-4 text-center text-xl font-semibold text-[#e1e1e1]">Competitors</h3>
       <Table className="bg-background">
         <TableHeader>
           <TableRow className="border-y-0 *:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">

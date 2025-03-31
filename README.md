@@ -1,7 +1,7 @@
 # ColossusAI - AI-Powered Learning Platform
 
 <p align="center">
-  <img src="fullstack/public/logo.png" alt="ColossusAI Logo" width="200" height="200" style="border-radius: 50%"/>
+  <img src="fullstack/public/about/Marketing1.png" alt="ColossusAI Platform" width="800"/>
   <br>
   <em>AI-Powered Learning, Smarter Knowledge Navigation</em>
 </p>
@@ -11,14 +11,12 @@
 ColossusAI is an innovative learning platform that transforms how you interact with information. Using advanced AI technology, we create visual roadmaps from your documents, making learning more intuitive and engaging. Our platform helps you navigate complex knowledge with ease, whether you're a student, researcher, or professional.
 
 <p align="center">
-  <img src="fullstack/public/about/Marketing1.png" alt="ColossusAI Platform" width="800"/>
+  <img src="fullstack/public/about/Landing.png" alt="ColossusAI Platform" width="800"/>
 </p>
 
 ## ✨ Key Features
 
-### 🔮 AI-Powered Knowledge Graphs
-<img src="fullstack/public/icons/Knowledge Graph.png" alt="Knowledge Graph Icon" width="40" align="left" style="margin-right: 10px"/>
-
+### 🧠 AI-Powered Knowledge Graphs
 Visual roadmaps generated from your documents for easier learning
 - Automated graph generation
 - Interactive visualization
@@ -26,22 +24,32 @@ Visual roadmaps generated from your documents for easier learning
 - Real-time updates
 
 ### 🔍 Intelligent Search & Query
-<img src="fullstack/public/icons/search.png" alt="Search Icon" width="40" align="left" style="margin-right: 10px"/>
-
 Enter queries in natural language to find relevant insights quickly
 - Natural language processing
 - Semantic search
 - Context-aware results
 - Quick filtering options
 
-### 📄 Smart Document Management
-<img src="fullstack/public/icons/Document.png" alt="Document Management Icon" width="40" align="left" style="margin-right: 10px"/>
-
+### 📑 Smart Document Management
 Upload and organize documents with ease for efficient access
 - Drag-and-drop upload
 - Automatic categorization
 - Version control
 - Advanced search capabilities
+
+### 📝 AI-Generated Summaries
+Get quick, AI-powered summaries to understand documents faster
+- Automatic summarization
+- Key points extraction
+- Customizable length
+- Multi-document synthesis
+
+### 👥 Collaboration & Sharing
+Share knowledge graphs with others to enhance group learning
+- Real-time collaboration
+- Access control
+- Comment system
+- Export and sharing options
 
 ## 🖼️ Screenshots
 

@@ -11,7 +11,7 @@
 ColossusAI is an innovative learning platform that transforms how you interact with information. Using advanced AI technology, we create visual roadmaps from your documents, making learning more intuitive and engaging. Our platform helps you navigate complex knowledge with ease, whether you're a student, researcher, or professional.
 
 <p align="center">
-  <img src="fullstack/public/about/Landing_Page_Group31.png" alt="ColossusAI Platform" width="800"/>
+  <img src="fullstack/public/about/landing.png" alt="ColossusAI Platform" width="800"/>
 </p>
 
 ## ✨ Key Features
@@ -46,21 +46,15 @@ Upload and organize documents with ease for efficient access
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="fullstack/public/about/Chatpage.png" alt="Knowledge Graph Example" width="800"/>
+  <img src="fullstack/public/scroll animation/Sample Graph.mp4" alt="Knowledge Graph Example" width="800"/>
   <br>
   <em>AI-Powered Knowledge Graph Visualization</em>
 </p>
 
 <p align="center">
-  <img src="fullstack/public/about/usecase.png" alt="Search Functionality" width="800"/>
+  <img src="fullstack/public/scroll animation/Marketing_Video.mp4" alt="Document Management" width="800"/>
   <br>
-  <em>Intelligent Search & Document Analysis</em>
-</p>
-
-<p align="center">
-  <img src="fullstack/public/about/presentation.png" alt="Document Management" width="800"/>
-  <br>
-  <em>Interactive Document Management</em>
+  <em>Interactive Document Management & Document Analysis</em>
 </p>
 
 ## 🛠️ Technologies Used
@@ -115,16 +109,16 @@ Upload and organize documents with ease for efficient access
 </p>
 
 <p align="center">
-  <img src="fullstack/public/about/followus.png" alt="Follow Us" width="800"/>
+  <img src="fullstack/public/about/cover.png" alt="Follow Us" width="800"/>
 </p>
 
 ## 🔗 Quick Links
 
 - [Official Website](https://www.colossusai.net/)
-- [Help Center](#)
-- [Terms of Service](#)
-- [Privacy Policy](#)
-- [FAQ](#)
+- [Help Center](https://www.colossusai.net/contactus#contact-form)
+- [Terms of Service](https://www.colossusai.net/terms-of-service)
+- [Privacy Policy](https://www.colossusai.net/privacy-policy)
+- [FAQ](https://www.colossusai.net/#faq)
 
 ## 📊 Competitive Edge
 
@@ -143,7 +137,7 @@ ColossusAI stands out from competitors with our comprehensive feature set:
 Visit [ColossusAI](https://www.colossusai.net/) and sign up for an account to begin your enhanced learning journey today!
 
 <p align="center">
-  <img src="fullstack/public/about/ms.png" alt="Mobile Screenshot" width="400"/>
+  <img src="fullstack/public/about/followus.png" alt="Mobile Screenshot" width="400"/>
   <br>
   <em>ColossusAI is available on all devices</em>
 </p>
@@ -153,7 +147,7 @@ Visit [ColossusAI](https://www.colossusai.net/) and sign up for an account to be
 Our dedicated team of developers, designers, and AI specialists work tirelessly to create the best learning experience possible.
 
 <p align="center">
-  <img src="fullstack/public/about/us.jpg" alt="Team Photo" width="800"/>
+  <img src="fullstack/public/about/123.jpg" alt="Team Photo" width="800"/>
 </p>
 
 <div align="center">

@@ -11,7 +11,7 @@
 ColossusAI is an innovative learning platform that transforms how you interact with information. Using advanced AI technology, we create visual roadmaps from your documents, making learning more intuitive and engaging. Our platform helps you navigate complex knowledge with ease, whether you're a student, researcher, or professional.
 
 <p align="center">
-  <img src="fullstack/public/about/landing.png" alt="ColossusAI Platform" width="800"/>
+  <img src="fullstack/public/about/Marketing1.png" alt="ColossusAI Platform" width="800"/>
 </p>
 
 ## ✨ Key Features
@@ -52,7 +52,7 @@ Upload and organize documents with ease for efficient access
 </p>
 
 <p align="center">
-  <img src="fullstack/public/scroll animation/Marketing_Video.mp4" alt="Document Management" width="800"/>
+  <img src="fullstack/public/about/usecase.png" alt="Document Management" width="800"/>
   <br>
   <em>Interactive Document Management & Document Analysis</em>
 </p>
